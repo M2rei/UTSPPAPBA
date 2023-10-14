@@ -14,11 +14,11 @@ class detailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val username2 = intent.getStringExtra(MainActivity.EXTRA_NAME)
         val film = intent.getParcelableExtra<Film>("film")
         if (film !=null){
             val textView : TextView = findViewById(R.id.detailedActivityTv)
             val imageView: ImageView = findViewById(R.id.imageview2)
-
             textView.text = film.name
             imageView.setImageResource(film.image)
 
@@ -26,14 +26,15 @@ class detailActivity : AppCompatActivity() {
         with(binding){
             btndtlback.setOnClickListener(){
                 val intentTohomeActivity = Intent(this@detailActivity, homeActivity::class.java)
+                intentTohomeActivity.putExtra(MainActivity.EXTRA_NAME, username2)
                 startActivity(intentTohomeActivity)
             }
             btndtlget.setOnClickListener(){
                 val intentTopaymentActivity = Intent(this@detailActivity, paymentActivity::class.java)
+                intentTopaymentActivity.putExtra(MainActivity.EXTRA_NAME, username2)
+                intentTopaymentActivity.putExtra("film2",film)
                 startActivity(intentTopaymentActivity)
             }
-
         }
-
     }
 }

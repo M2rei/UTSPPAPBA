@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Adapter
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import com.example.utsppapba.databinding.ActivityPaymentBinding
 
@@ -41,6 +42,10 @@ class paymentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPaymentBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        val username3 = intent.getStringExtra(MainActivity.EXTRA_NAME)
+        val film2 = intent.getParcelableExtra<Film>("film2")
         with(binding){
             val adapterType = ArrayAdapter(this@paymentActivity, com.google.android.material.R.layout.support_simple_spinner_dropdown_item, bioskopp )
             val tiketadapter = ArrayAdapter(this@paymentActivity, com.google.android.material.R.layout.support_simple_spinner_dropdown_item, jenistiket )
@@ -103,10 +108,13 @@ class paymentActivity : AppCompatActivity() {
                 intentToorderActivity.putExtra(jnspembayaran,spinnerjenispembayaran.selectedItem.toString())
                 intentToorderActivity.putExtra("tanggal", tanggal)
                 intentToorderActivity.putExtra("jam", jam)
+                intentToorderActivity.putExtra(MainActivity.EXTRA_NAME,username3)
+                intentToorderActivity.putExtra("film3", film2)
                 startActivity(intentToorderActivity)
             }
             btnpymback.setOnClickListener(){
                 val intentTodetailActivity = Intent(this@paymentActivity, detailActivity::class.java)
+                intentTodetailActivity.putExtra(MainActivity.EXTRA_NAME,username3)
                 startActivity(intentTodetailActivity)
             }
         }

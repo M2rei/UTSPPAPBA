@@ -32,10 +32,23 @@
             android:layout_gravity="center_horizontal"
             android:padding="24dp">
             <TextView
-                android:id="@+id/text1"
+                android:id="@+id/nama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:text="Nama"
+                android:textSize="10dp" />
+            <TextView
+                android:id="@+id/ussername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama"
+                android:textSize="15dp" />
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="Judul Film"
                 android:textSize="10dp" />
             <TextView
@@ -43,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="RATU ILMU HITAM"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
             <TextView
                 android:id="@+id/text3"
                 android:layout_width="wrap_content"
@@ -95,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="22 - 10 - 2023"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
             <TextView
                 android:id="@+id/text11"
                 android:layout_width="wrap_content"
@@ -108,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="08 : Wib"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

@@ -38,6 +38,7 @@ class homeActivity : AppCompatActivity() {
         filmAdapter.onItemClick = {
             val intentTodetailActivity = Intent(this@homeActivity, detailActivity::class.java)
             intentTodetailActivity.putExtra("film", it)
+            intentTodetailActivity.putExtra(MainActivity.EXTRA_NAME, username)
             startActivity(intentTodetailActivity)
         }
         with(binding){

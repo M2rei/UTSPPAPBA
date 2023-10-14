@@ -44,7 +44,9 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/white"/>
+                android:background="@drawable/custom"
+                android:backgroundTint="@color/white"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,8 +62,9 @@
                 android:id="@+id/spinnerjenistiket"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/white"/>
+                android:backgroundTint="@color/white"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -78,7 +81,8 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/white"/>
+                android:background="@drawable/custom"
+                android:backgroundTint="@color/white"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -96,7 +100,8 @@
                 android:layout_width="250dp"
                 android:layout_height="150dp"
                 android:datePickerMode="spinner"
-                android:background="@color/white"
+                android:background="@drawable/custom"
+                android:backgroundTint="@color/white"
                 android:calendarViewShown="false"/>
 
             <TextView
@@ -116,7 +121,8 @@
                 android:layout_marginBottom="35dp"
                 android:layout_height="150dp"
                 android:timePickerMode="spinner"
-                android:background="@color/white"/>
+                android:background="@drawable/custom"
+                android:backgroundTint="@color/white"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
