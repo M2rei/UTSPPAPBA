@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@color/bacground"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -15,7 +16,7 @@
         android:layout_margin="30dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp"
-        android:background="@color/black"
+        android:background="@color/bacground"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,6 +38,7 @@
                 android:layout_marginTop="30dp"
                 android:padding="10dp"
                 android:hint="Username"
+                android:inputType="text"
                 android:background="@drawable/custom"/>
             <EditText
                 android:id="@+id/passwordlgn"
@@ -44,7 +46,8 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="30dp"
                 android:padding="10dp"
-                android:hint="Password"
+                android:hint="NIM"
+                android:inputType="text"
                 android:background="@drawable/custom"/>
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnlgn"
@@ -53,8 +56,10 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="40dp"
                 android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:text="Log in"
-                android:background="@drawable/custom"/>
+                android:background="@drawable/custom"
+                android:backgroundTint="@color/button"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

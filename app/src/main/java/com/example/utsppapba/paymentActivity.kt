@@ -12,6 +12,13 @@ import com.example.utsppapba.databinding.ActivityPaymentBinding
 
 class paymentActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPaymentBinding
+    companion object{
+        var jnsbioskop = ""
+        var jnstiket = ""
+        var jnspembayaran = ""
+        var tanggal = ""
+        var jam = ""
+    }
     private val bioskopp = arrayOf(
         "Cinemaa XXI", "CGV", "Cinemaxx", "Independent", "New Star Cineplex","Platinum Cineplex"
 
@@ -21,70 +28,86 @@ class paymentActivity : AppCompatActivity() {
         "Tiket VIP          :          Rp75.000",
         "Tiket 3D atau IMAX :          Rp125000",
     )
+    private val jenispembayaran = arrayOf(
+        "Pembayaran Kartu Kredit",
+        "Gopay",
+        "OVO",
+        "Shoopeepay"
+
+    )
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPaymentBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var selectedbiskop = ""
-        var selectedtiket = ""
-        var selectedDate = ""
-        var selectedTime = ""
-
         with(binding){
             val adapterType = ArrayAdapter(this@paymentActivity, com.google.android.material.R.layout.support_simple_spinner_dropdown_item, bioskopp )
             val tiketadapter = ArrayAdapter(this@paymentActivity, com.google.android.material.R.layout.support_simple_spinner_dropdown_item, jenistiket )
-
+            val pembayaran = ArrayAdapter(this@paymentActivity, com.google.android.material.R.layout.support_simple_spinner_dropdown_item,jenispembayaran)
             adapterType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinnerbioskop.adapter = adapterType
+
             tiketadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinnerjenistiket.adapter = tiketadapter
 
+            pembayaran.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerjenispembayaran.adapter = pembayaran
+
             spinnerbioskop.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener{
                 override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?,position: Int, id: Long) {
-                    selectedbiskop = bioskopp[position]
+                    jnsbioskop = bioskopp[position]
                 }
 
                 override fun onNothingSelected(parentView: AdapterView<*>?) {
-                    selectedbiskop = bioskopp[0]
+                    jnsbioskop = bioskopp[0]
                 }
             })
             spinnerjenistiket.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener{
                 override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?,position: Int, id: Long) {
-                    selectedtiket = jenistiket[position]
+                    jnstiket = jenistiket[position]
                 }
 
                 override fun onNothingSelected(parentView: AdapterView<*>?) {
-                    selectedtiket = jenistiket[0]
+                    jnstiket = jenistiket[0]
+                }
+            })
+            spinnerjenispembayaran.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener{
+                override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?,position: Int, id: Long) {
+                    jnspembayaran = jenispembayaran[position]
+                }
+
+                override fun onNothingSelected(parentView: AdapterView<*>?) {
+                    jnspembayaran = jenispembayaran[0]
                 }
             })
             // date picker
-            datePicker.init(
-                datePicker.year,
-                datePicker.month,
-                datePicker.dayOfMonth
+            dtpicker.init(
+                dtpicker.year,
+                dtpicker.month,
+                dtpicker.dayOfMonth
             ){_, year, monthOfYear, dayOfMonth ->
-                selectedDate = "$dayOfMonth/${monthOfYear + 1}/$year"
+                tanggal = "$dayOfMonth/${monthOfYear + 1}/$year"
             }
             // timepicker
-            timePicker.setOnTimeChangedListener{view, hourOfDay, minute ->
-                selectedTime = String.format("%02d:%02d", hourOfDay, minute)
+            tmepicker.setOnTimeChangedListener{view, hourOfDay, minute ->
+                jam = String.format("%02d:%02d", hourOfDay, minute)
             }
             // end timepicker
 
             // button listener
-            btnpaymen.setOnClickListener(){
-                val selectedBioskop = selectedbiskop
-                val selectedTiket = selectedtiket
-                val selectedDate = selectedDate
-                val selectedTime = selectedTime
-
-                val intent = Intent(this@paymentActivity, orderActivity::class.java)
-                intent.putExtra("selectedBioskop", selectedBioskop)
-                intent.putExtra("selectedTiket", selectedTiket)
-                intent.putExtra("selectedDate", selectedDate)
-                intent.putExtra("selectedTime", selectedTime)
-                startActivity(intent)
+            btnpymorder.setOnClickListener(){
+                val intentToorderActivity= Intent(this@paymentActivity, orderActivity::class.java)
+                intentToorderActivity.putExtra(jnsbioskop, spinnerbioskop.selectedItem.toString())
+                intentToorderActivity.putExtra( jnstiket, spinnerjenistiket.selectedItem.toString())
+                intentToorderActivity.putExtra(jnspembayaran,spinnerjenispembayaran.selectedItem.toString())
+                intentToorderActivity.putExtra("tanggal", tanggal)
+                intentToorderActivity.putExtra("jam", jam)
+                startActivity(intentToorderActivity)
+            }
+            btnpymback.setOnClickListener(){
+                val intentTodetailActivity = Intent(this@paymentActivity, detailActivity::class.java)
+                startActivity(intentTodetailActivity)
             }
         }
     }

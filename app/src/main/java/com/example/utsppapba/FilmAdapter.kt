@@ -7,7 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class FilmAdapter (private val filmList:ArrayList<Film>) : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>(){
+class FilmAdapter (private val filmList:ArrayList<Film>)
+    : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>(){
+
     var onItemClick : ((Film) -> Unit)? = null
 
     class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

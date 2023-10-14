@@ -17,18 +17,20 @@ class homeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val username = intent.getStringExtra(MainActivity.EXTRA_NAME)
+
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = GridLayoutManager(this, 2)
 
         filmList = ArrayList()
 
-        filmList.add(Film(R.drawable.contoh, "judul 1"))
-        filmList.add(Film(R.drawable.contoh, "judul 2"))
-        filmList.add(Film(R.drawable.contoh, "judul 3"))
-        filmList.add(Film(R.drawable.contoh, "judul 4"))
-        filmList.add(Film(R.drawable.contoh, "judul 5"))
-        filmList.add(Film(R.drawable.contoh, "judul 6"))
+        filmList.add(Film(R.drawable.monkey, "The Monkey King"))
+        filmList.add(Film(R.drawable.legion, "Legion of Super Heroes"))
+        filmList.add(Film(R.drawable.elephant, "The Magician's Elephant"))
+        filmList.add(Film(R.drawable.marioo, "The Super Mario Bros. Movie"))
+        filmList.add(Film(R.drawable.evil, "Resident Evil: Death Island"))
+        filmList.add(Film(R.drawable.nimona, "Nimona"))
 
         filmAdapter = FilmAdapter(filmList)
         recyclerView.adapter = filmAdapter
@@ -37,6 +39,9 @@ class homeActivity : AppCompatActivity() {
             val intentTodetailActivity = Intent(this@homeActivity, detailActivity::class.java)
             intentTodetailActivity.putExtra("film", it)
             startActivity(intentTodetailActivity)
+        }
+        with(binding){
+            tkshome2.text = username
         }
     }
 }
